@@ -75,7 +75,7 @@ parser.add_argument(
     "to skip Pydantic validation (default is to add the mixin).",
 )
 parser.add_argument(
-    "--allow-user-specified-ids",
+    "--allow-user-specified-id",
     action=argparse.BooleanOptionalAction,
     default=argparse.SUPPRESS,  # override the builtin help for default
     help="Allow user specified ids in .edgeql files (default is to disallow).",

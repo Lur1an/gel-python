@@ -147,7 +147,7 @@ def _get_conn_args(args: argparse.Namespace):
         password=password,
         tls_ca_file=args.tls_ca_file,
         tls_security=args.tls_security,
-        allow_user_specified_ids=args.allow_user_specified_ids,
+        allow_user_specified_id=args.allow_user_specified_id,
     )
 
 
