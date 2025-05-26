@@ -147,7 +147,6 @@ def _get_conn_args(args: argparse.Namespace):
         password=password,
         tls_ca_file=args.tls_ca_file,
         tls_security=args.tls_security,
-        allow_user_specified_id=args.allow_user_specified_id,
     )
 
 
@@ -166,7 +165,10 @@ class Generator:
             )
             sys.exit(2)
         print_msg(f"Found EdgeDB project: {C.BOLD}{self._project_dir}{C.ENDC}")
-        self._client = gel.create_client(**_get_conn_args(args))
+        client = gel.create_client(**_get_conn_args(args))
+        if args.allow_user_specified_id:
+            client = client.with_config(allow_user_specified_id=True)
+        self._client = client
         self._single_mode_files = args.file
         self._search_dirs = []
         for search_dir in args.dir or []:
